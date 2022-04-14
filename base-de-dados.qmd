@@ -4,6 +4,9 @@ format:
   html:
     theme: yeti
 ---
+Material do curso passado:
+https://github.com/leobarone/cebrap_lab_programacao_r
+
 
 ```r
 library(bigrquery)
