@@ -1,0 +1,432 @@
+---
+title: "Aula 1: Introdução ao R"
+author: "Beatriz Milz"
+date: '2022-05-09'
+output: html_document
+lang: pt
+---
+
+## R básico ------
+
+-   Diferença entre console e script.
+
+-   Para executar o código:
+
+    -   Clique na linha e aperte Ctrl + Enter
+    -   Selecione um trecho de código e aperte Ctrl + Enter
+    
+- Podemos escrever comentários (textos que não serão executados) usando o hashtag (`#`).
+
+### R como calculadora
+
+-   O R permite realizar muitas operações matemáticas!
+
+-   A ordem matemática das operações também vale no R.
+
+```{r}
+2 + 5    # adição
+
+9 - 4    # subtração
+
+5 * 2    # multiplicação
+
+7 / 5    # divisão
+
+9 %% 4   # resto da divisão de 9 por 4
+
+7 %/% 4  # parte inteira da divisão de 7 por 4
+
+8 ^ 2    # potenciação
+```
+
+
+##  Exercício ---------
+
+1. Vamos usar o R para descorir a temperatura de hoje em Fahrenheit. Converta a temperatura de Celsius para Fahrenheit, usando a segunte fórmula: `TempF =  TempC * 1.8 + 32`: 
+
+
+```{r}
+
+```
+
+
+### Objetos
+
+-   Ao se desenvolver um script é comum que algumas informações ficam repetidas ao longo do script.
+
+-   Para reutilizar essas informações ao longo do script utilizamos o que chamamos de **objeto**.
+
+-   Um objeto retém e representa um valor, função ou base de dados
+
+-   Atribuindo valor a um objeto no R: utilizamos o operador: `<-`.
+    Ex: `nome_do_objeto <- valor`
+
+-   Atalho: `ALT` + `-`: cria o `<-` sinal de atribuição.
+
+Exemplos:
+
+```{r echo=TRUE}
+# objeto do tipo texto: SEMPRE ENTRE ASPAS!
+meu_nome <- "Beatriz Milz"
+meu_nome
+
+
+# Objeto do tipo numérico
+minha_idade <- 29
+minha_idade
+
+# objeto do tipo numérico (podemos usar casas decimais) 
+minha_altura <- 1.75
+minha_altura
+
+# objeto do tipo lógico (verdadeiro/falso)
+estuda <- TRUE
+estuda
+```
+##  Exercício ---------
+
+1. Crie objetos para armazenar informações sobre você: `nome` (texto), `idade` (numérico), `estuda` (verdadeiro ou falso).  
+
+
+```{r}
+
+```
+
+
+### Nomes de objetos
+
+-   Os nomes devem começar com uma letra. Podem conter letras, números, underline (`_`) e ponto (`.`).
+
+-   **Não usar acentuação e espaços nos nomes de objetos, arquivos, pastas, etc** (muito importante!)
+
+-   Recomendação: **usar_snake_case**, ou seja, palavras escritas em minúsculo separadas pelo underscore (`_`).
+
+-   O `R` é *case sensitive*, isto é, faz a diferenciação entre as letras minúsculas e maiúsculas. Portanto, um objeto chamado `teste` é diferente de uma outro objeto chamada `Teste`.
+
+##  Exercício ---------
+
+1. Tente adivinhar o tipo dos objetos abaixo: 
+
+```{r}
+cor_favorita <- "rosa"
+idade <- 29
+altura <- "1.75"
+peso <- 61.1
+gosta_brocolis <- TRUE
+gosta_carne <- "FALSE"
+```
+
+### Funções
+
+- Funções permitem automatizar tarefas comuns de forma mais poderosa do que copiar e colar.
+
+- O R possui muitas funções já implementadas.
+
+- Pacotes são coleções de funções, dados e documentação que ampliam as capacidades do R básico. Veremos como instalá-los logo!
+
+- Você pode desenvolver suas próprias funções!
+
+- Estrutura: `nome_da_funcao(argumentos = ...)`
+
+##  Exercício ---------
+
+1. Use a função `class()` e descubra qual é o tipo dos objetos apresentados no exercício anterior, e confira se a classe que você imaginou está correta.
+
+```{r}
+
+
+
+```
+ 
+
+### Combinar elementos e criando vetores
+
+- Podemos criar um conjunto de elementos usando a função `c()`. Exemplo:
+
+```{r}
+conjunto <- c(1, 2, 3)
+```
+
+
+- Os vetores armazena elementos de mesma classe. Caso tente combinar elementos de classe diferente, acontecerá a coerção. Ex:
+
+```{r}
+c("1", 2, 3) 
+
+c(1, 2, TRUE) 
+```
+
+- Podemos fazer operações com os vetores:
+
+
+```{r}
+# Combinar elementos - Função c() 
+ano_nascimento_irmaos <- c(1993, 1998, 2001, 2012, 2012)
+
+# subtração com cada elemento do vetor:
+idade_irmaos <- 2022 - ano_nascimento_irmaos
+
+# ver o resultado
+idade_irmaos
+```
+- Exemplo de vetor com texto:
+
+```{r}
+primeiro_semestre <- c("Janeiro", "Fevereiro", "Março",
+                       "Abril", "Maio", "Junho")
+
+```
+
+- A função `length()` retorna o comprimento do vetor, para descobrir quantos elementos ele tem:
+
+```{r}
+length(primeiro_semestre)
+```
+
+- Selecionando elementos por índice: utilizar `[]`
+
+```{r}
+# primeiro elemento do vetor
+primeiro_semestre[1] 
+
+# primeiro elemento até o segundo
+primeiro_semestre[1:2] 
+
+# remove o elemento 1
+primeiro_semestre[-1] 
+
+# seleciona o elemento seis até o quatro 
+# (e muda a ordem dos elementos)
+primeiro_semestre[6:4]
+
+```
+
+
+### NA - Not Available
+
+- Uma característica importante do R que pode dificultar a comparação são os valores ausentes ou `NA` (não disponíveis). 
+
+- `NA` representa um valor desconhecido. 
+
+-  Operações envolvendo um valor desconhecido também será desconhecido. Exemplo:
+
+```{r}
+vetor_com_na <- c(NA, 1, 5, 2, 5, NA)
+
+sum(vetor_com_na) # somar os valores do vetor
+```
+
+- `is.na()` é a função que testa se um objeto é NA.
+
+```{r}
+is.na(vetor_com_na)
+```
+
+
+### Buscando ajuda
+
+- Documentação: `help(nome_da_funcao)` ou `?nome_da_funcao`.
+
+```{r, eval=FALSE}
+help(sum)
+?sum
+```
+
+-  Se a dúvida permanecer, procure no Google ou pergunte no [Discourse](https://discourse.curso-r.com/).
+
+-   E se ainda tiver dúvidas, pergunte para a comunidade (há grupos no Telegram e outras redes sociais).
+
+
+## Instalar pacotes
+
+- Pacotes são coleções de funções, dados e documentação que estendem as capacidades do `R` básico.
+
+- Eles precisam ser instalados e carregados.
+
+
+- Você só precisa instalar o pacote uma vez, mas precisa carregá-lo sempre que começar uma nova sessão.
+
+
+- Instalação de Pacotes: `install.packages("nome-do-pacote")`. Para instalar o pacote use as aspas.
+
+```{{r}}
+install.packages("tidyverse")
+```
+
+
+-  Carregar pacotes: `library(nome-do-pacote)`. Para carregar o pacote, não é necessário utilizar aspas.
+
+```{r, eval=TRUE, message=FALSE}
+library(tidyverse)
+```
+
+
+
+## Importação de dados tabulares ---------
+
+- O formato mais comum que utilizamos são os Dataframes.
+
+- Possuem duas dimensões: linhas e colunas.
+
+- Cada colunas pode ser de classes diferentes.
+
+- Pense em uma tabela, como está acostumada a ver no Excel por exemplo. 
+
+- Formatos comuns: CSV, excel, entre outros.
+
+- Importando CSV:
+
+```{r}
+library(readr)
+dados_pnud <- read_csv2("../dados/base_pnud_min.csv")
+```
+
+- Importando excel:
+
+```{r}
+library(readxl)
+pnud_excel <- read_excel("../dados/base_pnud.xlsx")
+```
+
+- Salvando os dados em um arquivo csv:
+
+```{r}
+write_csv2(dados_pnud, "../dados/salvando_base_pnud.csv")
+```
+
+- Salvando os dados em um arquivo excel:
+
+```{r}
+library(writexl)
+write_xlsx(dados_pnud, "../dados/salvando_base_pnud.xlsx")
+```
+
+
+
+
+### Funções úteis para usar com dataframes
+
+```{r}
+# Retorna o número de colunas 
+ncol(dados_pnud)
+
+# Retorna o número de linhas
+nrow(dados_pnud)
+
+# Retorna o número de colunas e linhas
+dim(dados_pnud)
+
+# primeiras linhas
+head(dados_pnud)
+
+# dar uma "olhada" na base
+library(dplyr)
+glimpse(dados_pnud)
+```
+
+
+- Para selecionar colunas, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados_pnud$ano`.
+
+
+- Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
+
+- A função unique() retorna os valores únicos de um vetor. Exemplo: 
+
+```{r}
+unique(dados_pnud$ano)
+```
+
+- Outra forma de selecionar elementos é utilizando os colchetes:  `data_frame[numero da linha , numero da coluna]`! 
+
+```{r}
+dados_pnud[1, 2] # Seleciona a linha 1 e a coluna 2 
+```
+
+- Caso deixe algum dos espaços dentro do colchete vazio, o R retornará todas (as colunas ou linhas):
+
+```{r}
+dados_pnud[1, ] # Seleciona a linha 1 e TODAS as colunas
+```
+
+```{r}
+dados_pnud[ , 2] # Seleciona TODAS as linhas e apenas a coluna 2
+```
+
+
+
+### Funções básicas
+
+
+|  Função |  O que retorna? |
+|--:|--:|
+|  `sum()` |  Soma  | 
+|  `mean()` |  Média |
+|  `median()` |  Mediana |
+|  `var()` |  Variância (simples) |
+|  `sd()` |  Desvio Padrão |
+|  `max()` |  Valor máximo  |
+|  `min()` |  Valor mínimo |
+|  `round()` |  Valor arredondado |
+|  `sqrt()` |  Raíz quadrada |
+
+
+- Argumento importante: `na.rm = TRUE`
+
+```{r}
+vetor_com_na <- c(NA, 1, 5, 2, 5, NA)
+sum(vetor_com_na)
+sum(vetor_com_na, na.rm = TRUE)
+```
+
+```{r}
+mean(vetor_com_na)
+mean(vetor_com_na, na.rm = TRUE)
+```
+
+#### Exemplos:
+
+- Vamos usar os dados para o ano de 2010. Para isso é necessário filtrar os dados, e vamos ver como fazer isso na próxima aula!
+
+```{r}
+dados_pnud_2010 <-  filter(dados_pnud, ano == 2010)
+```
+
+```{r}
+# Soma de população em 2010: 
+sum(dados_pnud_2010$pop)
+```
+
+```{r}
+# média: expectativa de vida
+mean(dados_pnud_2010$espvida)
+```
+
+```{r}
+# mediana: expectativa de vida
+median(dados_pnud_2010$espvida)
+```
+```{r}
+# variância: expectativa de vida
+var(dados_pnud_2010$espvida)
+```
+```{r}
+# desvio padrão: expectativa de vida
+sd(dados_pnud_2010$espvida)
+```
+
+```{r}
+# maior valor encontrado
+max(dados_pnud_2010$espvida)
+```
+
+```{r}
+# menor valor encontrado
+min(dados_pnud_2010$espvida)
+```
+```{r}
+# media de expectativa de vida
+media_espvida <- mean(dados_pnud_2010$espvida)
+# arredondando para ter uma casa decimal
+round(media_espvida, 1)
+```
+
