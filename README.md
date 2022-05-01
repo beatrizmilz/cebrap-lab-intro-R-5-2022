@@ -7,9 +7,12 @@
 
 -   **Ministrante:** [Beatriz Milz](https://beatrizmilz.com/about/)
 
--   **Data/horário:** 9 a 13 de maio/2022; Segunda, Quarta e Sexta: aula
-    ao vivo, online, das 18h30 às 21h30. Terça e quinta: haverão tarefas
-    para casa, para praticar os conceitos.
+-   **Data/horário:** 9 a 13 de maio/2022;
+
+    -   Segunda, Quarta e Sexta: aula ao vivo, online, das 18h30 às
+        21h30.
+    -   Terça e quinta: haverão tarefas para casa, para praticar os
+        conceitos.
 
 -   **Inscrições:**
     <https://cursos.cebrap.org.br/cursos/introducao-ao-r/>
@@ -25,9 +28,6 @@
     descritivas, gerar gráficos simples, entre outros. O curso tem como
     público alvo pessoas que tenham interesse em utilizar R para análise
     de dados. Todas as ferramentas utilizadas são gratuitas.
-
-<!-- badges: start -->
-<!-- badges: end -->
 
 ## Outras informações
 
