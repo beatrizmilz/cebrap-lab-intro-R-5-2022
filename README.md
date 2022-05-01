@@ -29,6 +29,11 @@
     público alvo pessoas que tenham interesse em utilizar R para análise
     de dados. Todas as ferramentas utilizadas são gratuitas.
 
+## Materiais
+
+-   [Slide de apresentação do
+    curso](https://beatrizmilz.github.io/cebrap-lab-intro-R-5-2022/slides/introducao-ao-curso.html#/)
+
 ## Outras informações
 
 Material do curso de 2019 (ministrado por Leonardo Barone):
