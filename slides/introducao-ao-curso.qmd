@@ -1,0 +1,150 @@
+---
+title: "cebrap.lab online  Introdução ao R"
+subtitle: "Introdução ao curso"
+format: 
+  revealjs:
+    incremental: true   
+    logo: "https://cursos.cebrap.org.br/wp-content/uploads/2022/02/logo-nav.png"
+    footer: "Slides por [Beatriz Milz](https://beatrizmilz.com), feitos com [Quarto](https://quarto.org/docs/presentations/revealjs/index.html). Códigos e materiais disponíveis no [GitHub](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022). Licença de uso: [CC-BY-SA](https://beatrizmilz.com/license/)."
+    theme: ["custom.scss"]
+    slide-number: c/t
+    show-slide-number: all
+    hash-type: number
+editor: visual
+lang: pt
+author: "Beatriz Milz"
+date: 'Maio de 2022'
+---
+
+## Ministrante
+
+-  [Beatriz Milz](https://beatrizmilz.com/about/)
+
+- Doutoranda em Ciência Ambiental (PROCAM/IEE/USP) na Universidade de São Paulo.
+
+- Professora na [Curso-R](https://curso-r.com/).
+
+- Co-organizadora da R-Ladies São Paulo, uma comunidade que tem como objetivo promover a diversidade de gênero na comunidade da linguagem R.
+
+- Instrutora de tidyverse (asssunto que veremos nesse curso) certificada pela RStudio.
+
+
+## Informações gerais
+
+
+- **Data/horário:** 9 a 13 de maio/2022;  
+  - Segunda, Quarta e Sexta: aula ao vivo, online, das 18h30 às 21h30.
+  - Terça e quinta: haverão tarefas para casa, para praticar os conceitos.
+
+-  Material do curso de 2019 (ministrado por Leonardo Barone):
+<https://github.com/leobarone/cebrap_lab_programacao_r>
+
+
+## O que é o ...
+
+### R?
+
+R é um ambiente de software livre para computação estatística e gráficos. (https://www.r-project.org/)
+
+### RStudio?
+
+**RStudio** é uma IDE (_integrated development environment_) da Linguagem R, ou seja, um ambiente de desenvolvimento que utilizamos para editar e executar os códigos em R.
+
+
+### RStudio Cloud?
+
+É a IDE RStudio que podemos utilizar diretamente do navegador (sem que seja necessário instalar nada).
+
+
+## Pré-requisitos
+
+### Neste curso:
+
+- [RStudio Cloud](https://rstudio.cloud)
+
+
+### Para usar no dia-a-dia:
+
+- `R` e `RStudio` instalados no seu computador:
+
+- Links para instalação:
+  - [R](https://cran.r-project.org/bin/windows/base/)
+  - [RStudio](https://rstudio.com/products/rstudio/download/)
+
+
+## Por quê usar linguagens de programação para analisar dados? {.middle .center}
+
+## As vantagens de analisar dados usando linguagens de programação
+
+- O código é uma linguagem, então podemos documentar a nossa análise
+
+- O código é texto, então podemos copiar e colar
+
+-  As principais linguagens de programação para ciência de dados são de código aberto
+
+::: footer
+Slide por [Curso-R](https://curso-r.com/).
+:::
+
+
+
+## O que significa ser código aberto?
+
+
+1. Acesso gratuito.
+
+2. Todas as pessoas podem usar as melhores ferramentas independentemente do poder financeiro.
+
+3. Estudantes podem usar as mesmas ferramentas que profissionais.
+
+4. Você pode corrigir problemas e aprimorar a linguagem.
+
+5. Você pode desenvolver suas próprias ferramentas.
+
+6. Possibilita a existência de uma comunidade ativa.
+
+::: footer
+Slide por [Curso-R](https://curso-r.com/).
+:::
+
+
+
+## Por quê o R? {.middle .center}
+
+
+## O ciclo da ciência de dados
+
+<img src="img/ciclo-ciencia-de-dados.png" style = "display: block; margin-left: auto; margin-right: auto;">
+
+::: footer
+Slide por [Curso-R](https://curso-r.com/).
+:::
+
+
+
+## O ciclo da ciência de dados com o R
+
+<img src="img/ciclo-ciencia-de-dados-pacotes.png" style = "display: block; margin-left: auto; margin-right: auto;">
+
+::: footer
+Slide por [Curso-R](https://curso-r.com/).
+:::
+
+
+
+## Por quê usar o R?
+
+  - É uma linguagem de programação que possui muitas ferramentas para análise de dados
+
+  - É _código aberto_ (open source)
+
+  - Possui uma comunidade ativa de pessoas desenvolvedoras
+
+  - É flexível, permite desenvolver funções e pacotes para facilitar o trabalho 
+
+  - Está disponível, gratuitamente, em diferentes plataformas: Windows, Linux e Mac
+    
+  - Mantido pela [R Development Core Team](https://cran.r-project.org/)
+
+
+
