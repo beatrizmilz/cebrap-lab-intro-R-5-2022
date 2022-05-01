@@ -4,3 +4,5 @@
 .httr-oauth
 .DS_Store
 dados/br_inep_ideb_escola.Rds
+
+/.quarto/

@@ -1,0 +1,30 @@
+---
+title: "Base de dados"
+format:
+  html:
+    theme: yeti
+---
+
+```{{r}}
+remotes::install_github("abjur/abjData")
+```
+
+
+```{r}
+abjData::pnud_siglas # siglas
+abjData::pnud_min # resumo
+abjData::pnud_muni # base completa
+abjData::pnud_uf # uf
+
+
+uf_num <-  abjData::pnud_uf |> 
+  dplyr::select(uf, ufn)
+
+base_pnud_muni <- abjData::pnud_muni |> 
+  dplyr::left_join(uf_num) |> 
+  dplyr::relocate(ufn, .after = uf)
+
+readr::write_csv2(abjData::pnud_min, "base_pnud_muni.csv")
+readr::write_csv2(abjData::pnud_min, "base_pnud_min.csv")
+```
+
