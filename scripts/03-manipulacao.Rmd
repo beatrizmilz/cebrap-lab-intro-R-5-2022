@@ -40,7 +40,7 @@ names(dados_pnud)
 
 ## select
 
-Podemos selecionar colunas da base de dados.
+Podemos selecionar colunas da base de dados com a função `select()`.
 
 Sintaxe: select(nome_da_base, regras_para_selecionar_colunas)
 
@@ -74,6 +74,178 @@ Podemos selecionar colunas por exclusão:
 
 ```{r}
 select(dados_pnud, -muni_id)
+```
+
+## arrange
+
+
+Podemos ordenar a base de dados com a função `arrange()`.
+
+Sintaxe: select(nome_da_base, coluna_para_usar_para_ordenar)
+
+O padrão de ordenação é crescente:
+
+```{r}
+arrange(dados_pnud, pop)
+```
+
+Para ordenar de forma decrescente, podemos usar a função `desc()`:
+```{r}
+arrange(dados_pnud, desc(pop))
+```
+
+Podemos ordenar de acordo com os valores de duas colunas:
+
+```{r}
+arrange(dados_pnud, desc(ano), desc(pop))
+```
+
+A ordenação de textos segue a ordem alfabética:
+
+```{r}
+arrange(dados_pnud, muni_nm)
+```
+
+## pipe
+
+É comum fazer mais de uma operação em sequência. Por exemplo: selecionar colunas, e depois ordenar!
+
+Objetivo: gerar uma base que tem as colunas referentes ao ano, sigla da UF, nome do município e população. Essa base deve estar ordenada por ano e população.
+```{r}
+# forma 1
+base_selecionada <- select(dados_pnud, ano, uf_sigla,  muni_nm, pop)
+arrange(base_selecionada, ano, pop)
+
+# forma 2
+arrange(select(dados_pnud, ano, uf_sigla,  muni_nm, pop), ano, pop)
+```
+
+Podemos reescrever esse código com o pipe. O pipe conecta as operações, passando o resultado da última operação como primeiro argumento das próximas etapas.
+
+- `|>` é o pipe do base R, funciona a partir da versão 4.1 do R.
+
+- `%>%` é a versão do tidyverse.
+
+```{r}
+dados_pnud |> 
+  select(ano, uf_sigla,  muni_nm, pop) |> 
+  arrange(ano, pop)
+```
+
+## Pausa nos verbos: distinct e unique
+
+Quais são os valores únicos/distintos em uma coluna?
+
+- A base dados_pnud possui informações referentes à quais anos?
+
+```{r}
+distinct(dados_pnud, ano)
+unique(dados_pnud$ano)
+```
+- A base dados_pnud possui informações referentes à quais UFs?
+
+```{r}
+distinct(dados_pnud, uf_sigla)
+unique(dados_pnud$uf_sigla)
+```
+
+## filter
+
+- Para entender filtros, precisamos conhecer alguns conceitos de lógica. 
+
+- Comparações lógicas:
+```{r}
+# == significa: uma coisa é igual a outra?
+x <- 1
+
+# Teste com resultado verdadeiro
+x == 1
+
+# Teste com resultado falso
+x == 2
+```
+
+- Exemplo com filtros: Filtrando uma coluna da base: O que for TRUE (verdadeiro) será mantido!
+
+- Filtrar apenas informações referentes ao ano de 2010:
+
+```{r}
+dados_pnud %>% 
+  filter(ano == 2010) 
+```
+
+- Filtrar apenas informações referentes ao ano de 2010, e que sejam do estado de SP:
+
+```{r}
+dados_pnud %>% 
+  filter(ano == 2010, uf_sigla == "SP") 
+```
+
+- Comparações lógicas:
+
+```{r}
+x <-1
+# maior que 
+x > 3
+x > 0
+# menor que
+x < 3
+x < 0
+
+
+x > 1
+x >= 1 # Maior ou igual à
+
+x < 1
+x <= 1 # menor ou igual à 
+
+```
+
+
+Exemplos com filtros:
+
+- Filtrar apenas municípios que, no ano de 2010, tinham uma população igual ou maior à 1 milhão, e ordenar a base pela população (de forma decrescente).
+
+```{r}
+dados_pnud |> 
+  filter(ano == 2010, pop >= 1000000) |> 
+  arrange(desc(pop))
+```
+
+- Comparações lógicas:
+
+```{r}
+# != significa diferente de:
+x != 2
+x != 1
+```
+
+Exemplos com filtros:
+
+- Filtrar apenas dados que não sejam do ano de 1991.
+
+```{r}
+dados_pnud |> 
+  filter(ano != 1991)
+```
+
+
+
+- Comparações lógicas:
+
+```{r}
+# operador %in%
+x %in% c(1, 2, 3)
+x %in% c(2, 3, 4)
+```
+
+Exemplos com filtros:
+
+- Filtrar apenas dados de estados das pessoas participantes do curso:
+
+```{r}
+dados_pnud |> 
+  filter(uf_sigla %in% c("SP", "RJ"))
 ```
 
 

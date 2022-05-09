@@ -162,6 +162,7 @@ max(dados_pnud_2010$espvida)
 # menor valor encontrado
 min(dados_pnud_2010$espvida)
 ```
+
 ```{r}
 # media de expectativa de vida
 media_espvida <- mean(dados_pnud_2010$espvida)

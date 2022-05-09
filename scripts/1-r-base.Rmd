@@ -135,6 +135,7 @@ gosta_carne <- "FALSE"
 
 ```
  
+ 
 
 ## Combinar elementos e criando vetores
 
@@ -226,6 +227,57 @@ sum(vetor_com_na) # somar os valores do vetor
 ```{r}
 is.na(vetor_com_na)
 ```
+
+## Tarefa em grupo:
+
+1. Crie um vetor com os valores das alturas de todas as pessoas do grupo. Salve ele em um objeto chamado `valores_alturas`:
+
+```{r}
+
+```
+
+2. Usando as funções aprendidas hoje, verifique se a classe deste vetor é `numeric`:
+
+```{r}
+
+```
+
+3. Imagine que uma nova pessoa entrou no grupo, mas ela não se sentiu confortável em falar qual é a altura dela! Não sabemos qual é a altura dela, então tentem adicionar essa altura no vetor também.
+
+```{r}
+
+```
+
+4. Use a função `length()` com esse vetor criado, e tentem entender o que é que a função fez.
+
+```{r}
+
+```
+
+5. Calcule a média da altura das pessoas do grupo. A função `mean()` calcula a média.
+
+```{r}
+
+```
+
+6. Quais são as alturas máximas e mínimas do grupo? Use as funções `min()` e `max()` para encontrar esse valores.
+
+```{r}
+
+```
+
+7. Qual é a mediana desse conjunto de valores? Use a função `median()` para calcular.
+
+```{r}
+
+```
+
+8. Calcule a variância e o desvio padrão deste conjunto de valores usando as funções `var()` e `sd()`.
+
+```{r}
+
+```
+
 
 
 ## Buscando ajuda
