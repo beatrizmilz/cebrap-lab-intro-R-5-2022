@@ -1,0 +1,80 @@
+---
+title: "Tópico 3 - Manipulação de dados com dplyr"
+author: "Beatriz Milz"
+date: 'Maio de 2022'
+output: html_document
+---
+
+Vamos começar carregando os pacotes que vamos utilizar neste script.
+
+```{r message=FALSE}
+library(readr) # pacote para ler dados
+library(dplyr) # pacote para manipular dados
+```
+
+Então podemos importar a base de dados que vamos utilizar:
+
+```{r message=FALSE}
+dados_pnud <- read_csv2("../dados/base_pnud_min.csv")
+```
+
+Podemos ver a estrutura da base de dados usando a função `glimpse()`:
+
+```{r}
+glimpse(dados_pnud)
+```
+
+Podemos ver os nomes das colunas da base de dados usando a função `names()`:
+
+```{r}
+names(dados_pnud)
+```
+
+## dplyr
+
+- `select()`: seleciona colunas da base de dados
+- `filter()`: filtra linhas da base de dados
+- `arrange()`: reordena as linhas da base de dados
+- `mutate()`: cria novas colunas da base de dados (ou atualiza as colunas existentes)
+- `group_by()` + `summarise()`: agrupa e sumariza da base de dados
+
+## select
+
+Podemos selecionar colunas da base de dados.
+
+Sintaxe: select(nome_da_base, regras_para_selecionar_colunas)
+
+Selecionando uma coluna:
+
+```{r}
+select(dados_pnud, muni_nm)
+```
+
+Obs: Enquanto a gente não usar a atribuição `<-`, o objeto não é alterado!
+
+Selecionando várias colunas:
+
+```{r}
+select(dados_pnud, muni_nm, uf_sigla, pop)
+```
+
+A função select respeita a ordem das colunas:
+
+```{r}
+select(dados_pnud, uf_sigla, muni_nm, pop)
+```
+
+O operador `:` pode ser usado aqui para selecionar uma sequência de colunas:
+
+```{r}
+select(dados_pnud, muni_nm:regiao_nm)
+```
+
+Podemos selecionar colunas por exclusão:
+
+```{r}
+select(dados_pnud, -muni_id)
+```
+
+
+
