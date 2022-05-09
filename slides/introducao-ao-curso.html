@@ -441,6 +441,34 @@
 </ul></li>
 </ul>
 </section>
+<section class="slide level2">
+<h2>Quais dados vamos usar?</h2>
+<p>Dados disponibilizados no pacote <a href="https://abjur.github.io/abjData/">abjData</a>.</p>
+<ul>
+<li class="fragment"><code>pnud_min</code>: Um conjunto de dados, que contém informações disponibilizadas pelo Programa das Nações Unidas para o Desenvolvimento (PNUD). Os indicadores foram extraídos dos Censos Demográficos de 1991, 2000 e 2010. As informações estão organizadas a nível de municípios. Fonte: <a href="https://www.br.undp.org/content/brazil/pt/home/idh0/atlas-do-desenvolvimento-humano/atlas-dos-municipios.html">Site do PNUD</a>.</li>
+</ul>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 16,686
+Columns: 15
+$ ano       &lt;dbl&gt; 1991, 1991, 1991, 1991, 1991, 1991, 1991, 1991, 1991, 1991, …
+$ muni_id   &lt;dbl&gt; 1100015, 1100023, 1100031, 1100049, 1100056, 1100064, 110007…
+$ muni_nm   &lt;chr&gt; "ALTA FLORESTA D'OESTE", "ARIQUEMES", "CABIXI", "CACOAL", "C…
+$ uf_sigla  &lt;chr&gt; "RO", "RO", "RO", "RO", "RO", "RO", "RO", "RO", "RO", "RO", …
+$ regiao_nm &lt;chr&gt; "Norte", "Norte", "Norte", "Norte", "Norte", "Norte", "Norte…
+$ idhm      &lt;dbl&gt; 0.329, 0.432, 0.309, 0.407, 0.386, 0.376, 0.203, 0.425, 0.38…
+$ idhm_e    &lt;dbl&gt; 0.112, 0.199, 0.108, 0.171, 0.167, 0.151, 0.039, 0.220, 0.15…
+$ idhm_l    &lt;dbl&gt; 0.617, 0.684, 0.636, 0.667, 0.629, 0.658, 0.572, 0.629, 0.65…
+$ idhm_r    &lt;dbl&gt; 0.516, 0.593, 0.430, 0.593, 0.547, 0.536, 0.373, 0.553, 0.56…
+$ espvida   &lt;dbl&gt; 62.01, 66.02, 63.16, 65.03, 62.73, 64.46, 59.32, 62.76, 64.1…
+$ rdpc      &lt;dbl&gt; 198.46, 319.47, 116.38, 320.24, 240.10, 224.82, 81.38, 250.0…
+$ gini      &lt;dbl&gt; 0.63, 0.57, 0.70, 0.66, 0.60, 0.62, 0.59, 0.65, 0.63, 0.60, …
+$ pop       &lt;dbl&gt; 22835, 55018, 5846, 66534, 19030, 25070, 10737, 6902, 22505,…
+$ lat       &lt;dbl&gt; -11.929, -9.913, -13.492, -11.438, -13.189, -13.117, -12.962…
+$ lon       &lt;dbl&gt; -61.996, -63.041, -60.545, -61.448, -60.812, -60.542, -60.88…</code></pre>
+</div>
+</div>
+</section>
 <section class="slide level2 middle center">
 <h2>Vamos começar?</h2>
 
@@ -660,6 +688,48 @@
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
