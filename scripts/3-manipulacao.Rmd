@@ -380,7 +380,18 @@ dados_pnud |>
 
 - Podemos modificar colunas e criar novas colunas usando a função `mutate()`.
 
-```{r}
+- Exemplo: vamos modificar a coluna pop para que ela armazene a população em milhares.
 
+```{r}
+dados_pnud |> 
+  mutate(pop = pop/1000)
 ```
+
+- Exemplo: vamos criar uma nova coluna chamada `pop_mil` para que ela armazene a população em milhares.
+
+```{r}
+dados_pnud |> 
+  mutate(pop_mil = pop/1000)
+```
+
 
