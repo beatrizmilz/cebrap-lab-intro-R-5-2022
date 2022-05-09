@@ -248,7 +248,8 @@ is.na(vetor_com_na)
 
 ```
 
-4. Use a função `length()` com esse vetor criado, e tentem entender o que é que a função fez.
+4. Usando funções do R, verifique quantos valores temos nesse vetor.
+
 
 ```{r}
 

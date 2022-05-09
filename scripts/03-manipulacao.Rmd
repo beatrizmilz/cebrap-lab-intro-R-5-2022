@@ -8,8 +8,7 @@ output: html_document
 Vamos começar carregando os pacotes que vamos utilizar neste script.
 
 ```{r message=FALSE}
-library(readr) # pacote para ler dados
-library(dplyr) # pacote para manipular dados
+library(tidyverse)
 ```
 
 Então podemos importar a base de dados que vamos utilizar:
@@ -153,7 +152,10 @@ unique(dados_pnud$uf_sigla)
 
 - Para entender filtros, precisamos conhecer alguns conceitos de lógica. 
 
+### Comparações lógicas
+
 - Comparações lógicas:
+
 ```{r}
 # == significa: uma coisa é igual a outra?
 x <- 1
@@ -248,5 +250,137 @@ dados_pnud |>
   filter(uf_sigla %in% c("SP", "RJ"))
 ```
 
+### Operadores lógicos - &, | , !
 
+### & - E 
+
+- Para ser verdadeiro, os dois lados precisam resultar em TRUE:
+
+```{r}
+x <- 5
+x >= 3 & x <=7
+# TRUE & TRUE = TRUE
+
+
+y <- 2
+y >= 3 & y <= 7
+# FALSE & TRUE = FALSE
+```
+
+Exemplos com filtros:
+
+- No filter, a virgula funciona como o &!
+
+- Filtrar apenas informações referentes ao ano de 2010, e que sejam do estado de SP:
+
+```{r}
+dados_pnud %>% 
+  filter(ano == 2010 & uf_sigla == "SP") 
+```
+
+
+
+
+### | - OU
+
+-  Para resultar TRUE, apenas um dos lados precisa ser verdadeiro
+
+```{r}
+y <- 2
+y >= 3
+y <= 7
+
+y >= 3 | y <= 7
+
+y >= 3 | y <= 0
+```
+
+
+Exemplos com filtros:
+
+- Filtrar informações referentes ao ano de 2010 OUque sejam do estado de SP:
+
+```{r}
+dados_pnud %>% 
+  filter(ano == 2010 | uf_sigla == "SP") 
+```
+
+
+
+### ! - NOT
+
+-  Negação - É o "contrário". 
+
+```{r}
+!TRUE
+
+!FALSE
+```
+
+
+Exemplos com filtros:
+
+- Filtrar informações que não sejam do estado de São Paulo ou Rio de Janeiro:
+
+```{r}
+dados_pnud |> 
+  filter(!uf_sigla %in% c("SP", "RJ"))
+```
+
+### filtros e NA?
+
+- A função filter, por padrão, remove os NAs. Ex:
+
+```{r}
+df <- tibble(x = c(1, 2, 3, NA))
+df
+
+filter(df, x > 1)
+
+# manter os NAs!
+filter(df, x > 1 | is.na(x))
+```
+
+- E como remover NAs? 
+
+```{r}
+df %>% 
+  filter(!is.na(x))
+
+# o código anterior é equivalente à 
+df %>% 
+  drop_na(x)
+```
+
+
+### filtrando textos
+
+```{r}
+textos <- c("a", "aa", "abc", "bc", "A", NA)
+textos
+
+str_detect(textos, pattern =  "a")
+```
+
+Filtrar municípios que possuem o padrão `SÃO` no nome:
+
+```{r}
+dados_pnud |> 
+  filter(str_detect(muni_nm, "SÃO"))
+```
+
+Filtrar municípios que possuem o padrão `SÃO` ou `São` no nome:
+
+```{r}
+dados_pnud |> 
+  filter(str_detect(muni_nm, "SÃO|São")) 
+```
+
+## mutate
+
+- Podemos modificar colunas e criar novas colunas usando a função `mutate()`.
+
+```{r}
+
+```
 
