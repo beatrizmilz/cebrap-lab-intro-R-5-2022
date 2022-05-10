@@ -80,6 +80,7 @@ minha_altura
 estuda <- TRUE
 estuda
 ```
+
 ##  Exercício 
 
 1. Crie objetos para armazenar informações sobre você: `nome` (texto), `idade` (numérico), `estuda` (verdadeiro ou falso).  

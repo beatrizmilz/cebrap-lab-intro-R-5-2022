@@ -13,7 +13,7 @@ output: html_document
 
 - Pense em uma tabela, como está acostumada a ver no Excel por exemplo. 
 
-- Formatos comuns: CSV, excel, entre outros.
+- Formatos comuns: CSV, excel, txt, entre outros.
 
 - Importando CSV:
 
@@ -75,21 +75,21 @@ glimpse(dados_pnud)
 unique(dados_pnud$ano)
 ```
 
-- Outra forma de selecionar elementos é utilizando os colchetes:  `data_frame[numero da linha , numero da coluna]`! 
+<!-- - Outra forma de selecionar elementos é utilizando os colchetes:  `data_frame[numero da linha , numero da coluna]`!  -->
 
-```{r}
-dados_pnud[1, 2] # Seleciona a linha 1 e a coluna 2 
-```
+<!-- ```{r} -->
+<!-- dados_pnud[1, 2] # Seleciona a linha 1 e a coluna 2  -->
+<!-- ``` -->
 
-- Caso deixe algum dos espaços dentro do colchete vazio, o R retornará todas (as colunas ou linhas):
+<!-- - Caso deixe algum dos espaços dentro do colchete vazio, o R retornará todas (as colunas ou linhas): -->
 
-```{r}
-dados_pnud[1, ] # Seleciona a linha 1 e TODAS as colunas
-```
+<!-- ```{r} -->
+<!-- dados_pnud[1, ] # Seleciona a linha 1 e TODAS as colunas -->
+<!-- ``` -->
 
-```{r}
-dados_pnud[ , 2] # Seleciona TODAS as linhas e apenas a coluna 2
-```
+<!-- ```{r} -->
+<!-- dados_pnud[ , 2] # Seleciona TODAS as linhas e apenas a coluna 2 -->
+<!-- ``` -->
 
 
 

@@ -141,17 +141,18 @@ Slide por [Curso-R](https://curso-r.com/).
 
     -   Introdução a criação de gráficos
 
-## Quais dados vamos usar?
+## Quais dados vamos usar? 
 
 Dados disponibilizados no pacote [abjData](https://abjur.github.io/abjData/).
 
-- `pnud_min`: Um conjunto de dados, que contém informações disponibilizadas pelo Programa das Nações Unidas para o Desenvolvimento (PNUD). Os indicadores foram extraídos dos Censos Demográficos de 1991, 2000 e 2010. As informações estão organizadas a nível de municípios. Fonte: [Site do PNUD](https://www.br.undp.org/content/brazil/pt/home/idh0/atlas-do-desenvolvimento-humano/atlas-dos-municipios.html).
+-   `pnud_min`: Um conjunto de dados, que contém informações disponibilizadas pelo Programa das Nações Unidas para o Desenvolvimento (PNUD). Os indicadores foram extraídos dos Censos Demográficos de 1991, 2000 e 2010. As informações estão organizadas a nível de municípios. Fonte: [Site do PNUD](https://www.br.undp.org/content/brazil/pt/home/idh0/atlas-do-desenvolvimento-humano/atlas-dos-municipios.html).
+
+## Quais dados vamos usar? 
 
 ```{r}
 library(tidyverse)
 dados_pnud <- read_csv2("../dados/base_pnud_min.csv")
 glimpse(dados_pnud)
 ```
-
 
 ## Vamos começar? {.middle .center}
