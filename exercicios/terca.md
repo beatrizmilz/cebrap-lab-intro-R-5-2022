@@ -4,9 +4,11 @@
 
 - Caso não consiga fazer algum dos exercícios, não desista :) pule para o próximo.
 
+- de preferência, anote e me diga no início da aula quanto tempo vocês levaram para fazer esses exercícios.
+
 ## Parte 1 - Instalação do R e RStudio
 
-Nós estamos utilizando a RStudio Cloud durante o curso, porém no dia-a-dia é interessante que vocês consigam usar o R e o RStudio no computador pessoal de vocês.
+Nós estamos utilizando a RStudio Cloud durante o curso, porém no dia-a-dia é interessante que vocês consigam usar o R e o RStudio no **computador pessoal de vocês**.
 
 Portanto, a parte 1 da tarefa é realizar a instalação do R e do RStudio no computador pessoal, para que consigam usar depois do curso.
 
