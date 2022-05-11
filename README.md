@@ -34,6 +34,9 @@
 -   [Slide de apresentação do
     curso](https://beatrizmilz.github.io/cebrap-lab-intro-R-5-2022/slides/introducao-ao-curso.html#/)
 
+-   [Slide de correção do exercício
+    1](https://beatrizmilz.github.io/cebrap-lab-intro-R-5-2022/slides/aula-2.html)
+
 ## Outras informações
 
 Material do curso de 2019 (ministrado por Leonardo Barone):

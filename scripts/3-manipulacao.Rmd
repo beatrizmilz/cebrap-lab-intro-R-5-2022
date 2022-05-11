@@ -1,8 +1,11 @@
 ---
 title: "Tópico 3 - Manipulação de dados com dplyr"
-author: "Beatriz Milz"
-date: 'Maio de 2022'
-output: html_document
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
 ---
 
 Vamos começar carregando os pacotes que vamos utilizar neste script.
@@ -117,6 +120,7 @@ arrange(dados_pnud, muni_nm)
 É comum fazer mais de uma operação em sequência. Por exemplo: selecionar colunas, e depois ordenar!
 
 Objetivo: gerar uma base que tem as colunas referentes ao ano, sigla da UF, nome do município e população. Essa base deve estar ordenada por ano e população.
+
 ```{r}
 # forma 1
 base_selecionada <- select(dados_pnud, ano, uf_sigla,  muni_nm, pop)
