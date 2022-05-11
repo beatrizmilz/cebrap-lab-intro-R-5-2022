@@ -1,9 +1,14 @@
 ---
 title: "Tópico 2 - Importação de dados"
-author: "Beatriz Milz"
-date: 'Maio de 2022'
-output: html_document
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
 ---
+
+## Importação
 
 - O formato mais comum que utilizamos são os Dataframes.
 
@@ -29,6 +34,43 @@ library(readxl)
 pnud_excel <- read_excel("../dados/base_pnud.xlsx")
 ```
 
+- Podemos usar o Import dataset do RStudio! O importante é salvar o código no script. Exemplo:
+
+```{r}
+
+```
+
+
+Podemos também importar algumas bases diretamente da URL! 
+Exemplo 1: Execução orçamentária da PMSP:
+
+<http://orcamento.sf.prefeitura.sp.gov.br/orcamento/execucao.php>
+
+```{r}
+
+```
+
+Exemplo 2: Mananciais
+
+<https://beatrizmilz.github.io/mananciais/>
+
+```{r}
+
+```
+
+
+
+Exercício: Importe a base `dicionario_base_pnud_min.csv`:
+
+```{r}
+
+```
+
+
+
+
+## Salvando no computador
+
 - Salvando os dados em um arquivo csv:
 
 ```{r}
@@ -40,6 +82,12 @@ write_csv2(dados_pnud, "../dados/salvando_base_pnud.csv")
 ```{r}
 library(writexl)
 write_xlsx(dados_pnud, "../dados/salvando_base_pnud.xlsx")
+```
+
+Exercício: Salve a base do dicionário dos dados do pnud com outro nome, por exemplo: `dicionario_pnud_output.csv`
+
+```{r}
+
 ```
 
 
@@ -64,33 +112,30 @@ glimpse(dados_pnud)
 ```
 
 
+- Exercícios: Explore a base do dicionário do pnud. Quantas colunas tem? Quantas linhas tem? Quais informações essa pequena base apresenta?
+
+```{r}
+
+```
+
+
+
 - Para selecionar colunas, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados_pnud$ano`.
 
 
 - Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
 
-- A função unique() retorna os valores únicos de um vetor. Exemplo: 
+- A função `unique()` retorna os valores únicos de um vetor. Exemplo: 
 
 ```{r}
 unique(dados_pnud$ano)
 ```
 
-<!-- - Outra forma de selecionar elementos é utilizando os colchetes:  `data_frame[numero da linha , numero da coluna]`!  -->
+Exercício: Use a função aprendida para criar um vetor com as siglas dos estados do Brasil.
 
-<!-- ```{r} -->
-<!-- dados_pnud[1, 2] # Seleciona a linha 1 e a coluna 2  -->
-<!-- ``` -->
-
-<!-- - Caso deixe algum dos espaços dentro do colchete vazio, o R retornará todas (as colunas ou linhas): -->
-
-<!-- ```{r} -->
-<!-- dados_pnud[1, ] # Seleciona a linha 1 e TODAS as colunas -->
-<!-- ``` -->
-
-<!-- ```{r} -->
-<!-- dados_pnud[ , 2] # Seleciona TODAS as linhas e apenas a coluna 2 -->
-<!-- ``` -->
-
+```{r}
+sort(unique(dados_pnud$uf_sigla))
+```
 
 
 ## Funções básicas
@@ -111,18 +156,20 @@ unique(dados_pnud$ano)
 
 - Argumento importante: `na.rm = TRUE`
 
+Somando do `vetor_com_na`:
 ```{r}
 vetor_com_na <- c(NA, 1, 5, 2, 5, NA)
 sum(vetor_com_na)
 sum(vetor_com_na, na.rm = TRUE)
 ```
 
+Calculando a média do `vetor_com_na`:
 ```{r}
 mean(vetor_com_na)
 mean(vetor_com_na, na.rm = TRUE)
 ```
 
-## Exemplos:
+Exercícios:
 
 - Vamos usar os dados para o ano de 2010. Para isso é necessário filtrar os dados, e vamos ver como fazer isso no próximo tópico!
 
@@ -130,43 +177,53 @@ mean(vetor_com_na, na.rm = TRUE)
 dados_pnud_2010 <-  filter(dados_pnud, ano == 2010)
 ```
 
+a) Qual era a soma da população do Brasil em 2010?
 ```{r}
 # Soma de população em 2010: 
 sum(dados_pnud_2010$pop)
 ```
 
+b) Qual era a média da expectativa de vida da população do Brasil em 2010?
 ```{r}
 # média: expectativa de vida
-mean(dados_pnud_2010$espvida)
+media_espvida <- mean(dados_pnud_2010$espvida)
 ```
 
+Arredonde o valor encontrado nesse exercício, para apresentar 1 casa decimal:
+```{r}
+# arredondando para ter uma casa decimal
+round(media_espvida, 1)
+```
+
+c) Qual era a mediana da expectativa de vida da população do Brasil em 2010?
 ```{r}
 # mediana: expectativa de vida
 median(dados_pnud_2010$espvida)
 ```
+
+d) Qual era a variância da expectativa de vida da população do Brasil em 2010?
 ```{r}
 # variância: expectativa de vida
 var(dados_pnud_2010$espvida)
 ```
+
+e) Qual era o desvio padrão da expectativa de vida da população do Brasil em 2010?
 ```{r}
 # desvio padrão: expectativa de vida
 sd(dados_pnud_2010$espvida)
 ```
 
+f) Qual foi o maior valor encontado em um estado para a  expectativa de vida da população do Brasil em 2010?
 ```{r}
 # maior valor encontrado
 max(dados_pnud_2010$espvida)
 ```
-
+g) Qual foi o menor valor encontado em um estado para a  expectativa de vida da população do Brasil em 2010?
 ```{r}
 # menor valor encontrado
 min(dados_pnud_2010$espvida)
 ```
 
-```{r}
-# media de expectativa de vida
-media_espvida <- mean(dados_pnud_2010$espvida)
-# arredondando para ter uma casa decimal
-round(media_espvida, 1)
-```
+
+
 
