@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+output: html_document
+date: '2022-05-11'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+exemplo <- read_csv2("../dados/base_pnud_min.csv")
+```
+

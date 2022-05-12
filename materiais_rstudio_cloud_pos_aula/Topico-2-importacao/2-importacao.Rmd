@@ -1,0 +1,271 @@
+---
+title: "Tópico 2 - Importação de dados"
+author: "Document Author"
+date: "`r Sys.Date()`"
+output:
+  prettydoc::html_pretty:
+    theme: cosmo
+    highlight: github
+---
+
+## Importação
+
+- O formato mais comum que utilizamos são os Dataframes/tibble/base de dados/dataset
+
+- Possuem duas dimensões: linhas e colunas.
+
+- Cada colunas pode ser de classes diferentes.
+
+- Pense em uma tabela, como está acostumada a ver no Excel por exemplo. 
+
+- Formatos comuns: CSV, excel, txt, entre outros.
+
+- Importando CSV: comma separated values - valores separados por vírgula
+- csv2 é para texto separado por ;
+- csv é para texto separado por ,
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(janitor)
+dados_pnud <- read_csv2("dados/base_pnud_min.csv")
+```
+
+
+- Caminho: absoluto, relativo
+
+
+- Importando excel:
+
+```{r}
+pnud_excel <- read_excel("dados/base_pnud.xlsx")
+```
+
+- Podemos usar o Import dataset do RStudio! O importante é salvar o código no script. Exemplo:
+
+```{r}
+library(readr)
+base_pnud_min <- read_delim("dados/base_pnud_min.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+# View(base_pnud_min)
+```
+
+
+Podemos também importar algumas bases diretamente da URL! 
+Exemplo 1: Execução orçamentária da PMSP:
+
+<http://orcamento.sf.prefeitura.sp.gov.br/orcamento/execucao.php>
+
+CTRL + SHIFT + C - comentar trecho de codigo
+
+```{r}
+library(readxl)
+# url <- "http://orcamento.sf.prefeitura.sp.gov.br/orcamento/uploads/2022/basedadosexecucao2022.xlsx"
+destfile <- "dados/basedadosexecucao2022.xlsx"
+# curl::curl_download(url, destfile)
+basedadosexecucao2022 <- read_excel(destfile)
+
+# limpa os nomes de todas as colunas!! é do pacote janitor
+clean_names(basedadosexecucao2022)
+
+```
+
+Exemplo 2: Mananciais
+
+<https://beatrizmilz.github.io/mananciais/>
+
+ctrl + shift + a. = organizar o código
+```{r}
+library(readr)
+mananciais <-
+  read_delim(
+    "https://github.com/beatrizmilz/mananciais/raw/master/inst/extdata/mananciais.csv",
+    delim = ";",
+    escape_double = FALSE,
+    locale = locale(decimal_mark = ",",
+                    grouping_mark = "."),
+    trim_ws = TRUE
+  )
+# View(mananciais)
+```
+
+
+
+Exercício: Importe a base `dicionario_base_pnud_min.csv`:
+
+```{r}
+pnud_dicio <- read_csv2("dados/dicionario_base_pnud_min.csv", show_col_types = FALSE)
+
+# pnud_dicio[ 1, 4]
+```
+
+
+
+
+## Salvando no computador
+
+- Salvando os dados em um arquivo csv:
+
+```{r}
+write_csv2(mananciais, file = "dados/mananciais.csv")
+```
+
+- Salvando os dados em um arquivo excel:
+
+```{r}
+library(writexl)
+write_xlsx(mananciais, "dados/mananciais.xlsx")
+```
+
+Exercício: Salve a base do dicionário dos dados do pnud com outro nome, por exemplo: `dicionario_pnud_output.csv`
+
+```{r}
+write_csv2(pnud_dicio, file = "dados/pnud-dicio.csv")
+```
+
+
+## Funções úteis para usar com dataframes
+
+```{r}
+# Retorna o número de colunas 
+ncol(dados_pnud)
+
+# Retorna o número de linhas
+nrow(dados_pnud)
+
+# Retorna o número de colunas e linhas
+dim(dados_pnud)
+
+# primeiras linhas
+head(dados_pnud)
+
+# dar uma "olhada" na base
+glimpse(dados_pnud)
+
+```
+
+
+- Exercícios: Explore a base do dicionário do pnud. Quantas colunas tem? Quantas linhas tem? Quais informações essa pequena base apresenta?
+
+```{r}
+
+```
+
+
+
+- Para selecionar colunas, utilize o `$`. Elas retornarão como vetores, e poderemos usar as funções que já conhecemos. Ex: `dados_pnud$ano`.
+
+
+- Dica: após escrever o `nome_do_dataframe$`, aperte `tab` para que o RStudio faça sugestões de colunas da base.
+
+
+```{r}
+vetor <- 1:10
+mean(vetor)
+
+
+# dados_pnud$espvida
+mean(dados_pnud$espvida)
+```
+
+- A função `unique()` retorna os valores únicos de um vetor. Exemplo: 
+
+```{r}
+unique(dados_pnud$ano)
+```
+
+
+
+Exercício: Use a função aprendida para criar um vetor com as siglas dos estados do Brasil.
+
+```{r}
+
+```
+
+
+## Funções básicas
+
+
+|  Função |  O que retorna? |
+|--:|--:|
+|  `sum()` |  Soma  | 
+|  `mean()` |  Média |
+|  `median()` |  Mediana |
+|  `var()` |  Variância (simples) |
+|  `sd()` |  Desvio Padrão |
+|  `max()` |  Valor máximo  |
+|  `min()` |  Valor mínimo |
+|  `round()` |  Valor arredondado |
+|  `sqrt()` |  Raíz quadrada |
+
+
+- Argumento importante: `na.rm = TRUE`
+
+Somando do `vetor_com_na`:
+```{r}
+vetor_com_na <- c(NA, 1, 5, 2, 5, NA)
+
+```
+
+Calculando a média do `vetor_com_na`:
+```{r}
+mean(vetor_com_na, na.rm = TRUE)
+```
+
+Exercícios:
+
+- Vamos usar os dados para o ano de 2010. Para isso é necessário filtrar os dados, e vamos ver como fazer isso no próximo tópico!
+
+```{r}
+dados_pnud_2010 <-  filter(dados_pnud, ano == 2010)
+```
+
+a) Qual era a soma da população do Brasil em 2010?
+```{r}
+# Soma de população em 2010: 
+
+```
+
+b) Qual era a média da expectativa de vida da população do Brasil em 2010?
+```{r}
+# média: expectativa de vida
+
+```
+
+Arredonde o valor encontrado nesse exercício, para apresentar 1 casa decimal:
+```{r}
+# arredondando para ter uma casa decimal
+
+```
+
+c) Qual era a mediana da expectativa de vida da população do Brasil em 2010?
+```{r}
+# mediana: expectativa de vida
+
+```
+
+d) Qual era a variância da expectativa de vida da população do Brasil em 2010?
+```{r}
+# variância: expectativa de vida
+
+```
+
+e) Qual era o desvio padrão da expectativa de vida da população do Brasil em 2010?
+```{r}
+# desvio padrão: expectativa de vida
+
+```
+
+f) Qual foi o maior valor encontado em um estado para a  expectativa de vida da população do Brasil em 2010?
+```{r}
+# maior valor encontrado
+
+```
+
+g) Qual foi o menor valor encontado em um estado para a  expectativa de vida da população do Brasil em 2010?
+```{r}
+# menor valor encontrado
+
+```
+
+
