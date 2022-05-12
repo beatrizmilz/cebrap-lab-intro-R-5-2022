@@ -28,13 +28,27 @@ knitr::opts_chunk$set(
 
 ## Materiais
 
+### Slides
+
 - [Slide de apresentação do curso](https://beatrizmilz.github.io/cebrap-lab-intro-R-5-2022/slides/introducao-ao-curso.html#/)
 
 - [Slide de correção do exercício 1](https://beatrizmilz.github.io/cebrap-lab-intro-R-5-2022/slides/aula-2.html)
 
+### Scripts
+
+Abaixo estão os scripts usados no RStudio Cloud após a aula:
+
+- [R Base](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/tree/main/materiais_rstudio_cloud_pos_aula/Topico-1-R-base)
+
+- [Importação](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/tree/main/materiais_rstudio_cloud_pos_aula/Topico-2-importacao)
 
 
+- [Baixar zip completo](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/archive/refs/heads/main.zip) - é melhor baixar após o curso!
 
+
+### Links citados em aula
+
+Em breve!
 
 
 ## Outras informações
