@@ -56,7 +56,7 @@ Abaixo estão os scripts usados no RStudio Cloud após a aula:
 -   [Manipulação](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/blob/main/materiais_rstudio_cloud_pos_aula/Topico-3-manipulacao/3-manipulacao.Rmd)
 
 -   [Baixar zip
-    completo](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/archive/refs/heads/main.zip)
+    completo](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/raw/main/material_completo.zip)
 
 ### Exercícios
 
@@ -94,6 +94,23 @@ Abaixo estão os scripts usados no RStudio Cloud após a aula:
 |    3 | [Pacote para combinar gráficos](https://patchwork.data-imaginist.com/articles/patchwork.html)                                                               |
 |    3 | [Pacote para trabalhar com textos](https://stringr.tidyverse.org/articles/stringr.html)                                                                     |
 |    3 | [Funções para criar tabelas de frequências e porcentagens](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html)                           |
+
+## Materiais para estudar mais
+
+-   [Livro online e gratuito: Ciência de Dados em
+    R](https://livro.curso-r.com/7-2-dplyr.html)
+
+-   [Slide Curso-R: Introdução ao
+    R](https://curso-r.github.io/main-r4ds-1/slides/02-introducao-ao-r.html#1)
+
+-   [Slide Curso-R: Importação de
+    dados](https://curso-r.github.io/main-r4ds-1/slides/03-importacao.html#1)
+
+-   [Slide Curso-R: Manipulação de
+    dados](https://curso-r.github.io/main-r4ds-1/slides/04-manipulacao.html#1)
+
+-   [Slide Curso-R: Visualizando dados com o pacote
+    ggplot2](https://curso-r.github.io/main-r4ds-1/slides/05-ggplot2.html#1)
 
 ## Outras informações
 
