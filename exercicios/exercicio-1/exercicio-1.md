@@ -55,7 +55,7 @@ As etapas a seguir são opcionais, mas caso você não esteja confortável com a
 
 3 - Aperte knit e veja o que acontece!
 
-4 - O vetor abaixo apresenta a expectativa de vida por UF no Brasil em 2010:
+4 - O vetor abaixo apresenta a esperança de vida por UF no Brasil em 2010:
 
 esp_vida_2010 <- c(71.63, 70.32, 73.8, 73.3, 71.97, 72.6, 77.35, 75.1, 74.6, 70.4, 
 74.25, 74.96, 75.3, 72.36, 72, 74.8, 72.32, 71.62, 75.1, 72.52, 
