@@ -1,0 +1,102 @@
+---
+title: "Tópico 3 - Manipulação de dados"
+author: "Document Author"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output:
+  prettydoc::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+```
+
+1) Primeiro, precisamos carregar o pacote tidyverse, que será usado ao longo do script. Carregue aqui também outros pacotes que possa chegar a carregar
+
+```{r}
+library(tidyverse)
+library(knitr)
+```
+
+2) Precisamos carregar a base também: carregue o arquivo `base_pnud_min.csv` e salve no objeto `dados_pnud`.
+
+```{r}
+dados_pnud <- read_csv2("dados/base_pnud_min.csv")
+```
+
+
+3) Neste exercício, vamos criar uma tabela com as seguintes informações: Soma da população em milhões, no ano de 2010, agrupado por região do Brasil. A tabela deve estar ordenada de forma decrescente segundo a população em milhões. Exemplo do que queremos gerar:
+
+|Região	         |População em milhões (2010)|
+|----------------|---------|
+|Sudeste	       |  79.48  |
+|Nordeste	       |  52.01  |
+|Sul	           |  27.14  |
+|Norte	         |  15.18  |
+|Centro-Oeste	   |  13.84  |
+ 
+Escreva o código para gerar essa tabela no campo de código abaixo:
+
+```{r}
+dados_pnud |> 
+filter(ano == 2010) |> 
+ group_by(regiao_nm) |> 
+ summarise(soma_pop_milhoes = round(sum(pop)/1000000, 2)) |> 
+ arrange(desc(soma_pop_milhoes)) |> 
+ kable(col.names = c("Região", "População em milhões (2010)"))
+```
+
+
+4) Neste exercício, queremos escrever a seguinte frase, segundo o estado onde você mora:
+
+Eu moro em **SP**, um estado com **645** municípios. Em 2010, a população no estado de **SP** era de **40.92** milhões. Neste estado, os 5 municípios com o maior IDH municipal em 2010 foram: **São Caetano do Sul, Águas de São Pedro, Santos, Jundiaí e Valinhos**.
+
+Para fazer isso, o código que gera cada informação consta abaixo. É necessário alterar a sigla do estado no objeto `estado`. 
+
+```{r}
+# sigla do estado
+estado <- "SP"
+# filtrando os dados para 2010, e para o estado
+base_filtrada  <- dados_pnud |>
+  filter(uf_sigla == estado, ano == 2010) |>
+  # arrumando os nomes, para não ficar tudo maiúsculo
+  mutate(
+    muni_nm = str_to_title(muni_nm),
+    muni_nm = str_replace(muni_nm, " Do ", " do "),
+    muni_nm = str_replace(muni_nm, " De ", " de "),
+    muni_nm = str_replace(muni_nm, " Da ", " da "),
+    muni_nm = str_replace(muni_nm, " Dos ", " dos "),
+    muni_nm = str_replace(muni_nm, " Das ", " das ")
+  ) 
+  
+  # número de municipios
+  numero_munic <- nrow(base_filtrada)
+
+# soma da populacao do estado em milhoes
+soma_pop_estado <- round(sum(base_filtrada$pop) / 1000000, 2)
+
+# nome dos 5 municípios com maior idhm municipal
+frase_5_municipios <- base_filtrada |>
+  # ordenar de forma decrescente
+  arrange(desc(idhm)) |>
+  # buscar só as linhas 1 à 5
+  slice(1:5) |>
+  # criar uma frase, combinando as palavras
+  summarise(nome_muni = combine_words(muni_nm, and = " e ", oxford_comma = FALSE))
+
+```
+
+
+Agora, utilizando o código em linha (usando crase, R, código para executar, e crase), substitua os valores pelos objetos e confira no documento gerado (após apertar knit) se o seu texto se parece com o texto gerado acima:
+
+Eu moro em XX, um estado com XXXX municípios. Em 2010, a população no estado de XXXXX era de XXXXX milhões. Neste estado, os 5 municípios com o maior IDH municipal em 2010 foram: XXXX.
+
+-----
+
+Caso queira realizar mais exercícios, experimente os exercícios [deste capítulo](https://livro.curso-r.com/7-2-dplyr.html).
+
