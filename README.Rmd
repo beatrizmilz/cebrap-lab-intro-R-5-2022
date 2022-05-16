@@ -13,6 +13,11 @@ knitr::opts_chunk$set(
 
 # cebrap.lab online -  Introdução ao R
 
+Status: CURSO ENCERRADO
+
+Para saber de próximos oferecimentos, entre em contato com <cebrap.lab@cebrap.org.br>
+
+
 ## Informações gerais
 
 - **Ministrante:** [Beatriz Milz](https://beatrizmilz.com/about/)
@@ -38,17 +43,30 @@ knitr::opts_chunk$set(
 
 Abaixo estão os scripts usados no RStudio Cloud após a aula:
 
-- [R Base](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/tree/main/materiais_rstudio_cloud_pos_aula/Topico-1-R-base)
+- [R Base](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/blob/main/materiais_rstudio_cloud_pos_aula/Topico-1-R-base/1-r-base.Rmde)
 
-- [Importação](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/tree/main/materiais_rstudio_cloud_pos_aula/Topico-2-importacao)
+- [Importação](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/blob/main/materiais_rstudio_cloud_pos_aula/Topico-2-importacao/2-importacao.Rmd)
+
+- [Manipulação](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/blob/main/materiais_rstudio_cloud_pos_aula/Topico-3-manipulacao/3-manipulacao.Rmd)
 
 
-- [Baixar zip completo](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/archive/refs/heads/main.zip) - é melhor baixar após o curso!
+- [Baixar zip completo](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/archive/refs/heads/main.zip) 
 
+### Exercícios
+
+- Atenção: os arquivos dos exercícios contém as respostas.
+
+- [Exercícios](https://github.com/beatrizmilz/cebrap-lab-intro-R-5-2022/tree/main/exercicios)
 
 ### Links citados em aula
 
-Em breve!
+```{r echo=FALSE, message=FALSE}
+readr::read_csv2("referencias.csv") |> 
+  dplyr::mutate(Material = glue::glue("[{Material}]({Link})")) |> 
+  dplyr::select(-Link) |> 
+  knitr::kable()
+```
+
 
 
 ## Outras informações
